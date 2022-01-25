@@ -5,7 +5,7 @@ import io.flutter.embedding.android.FlutterFragment
 import io.flutter.plugin.common.MethodChannel
 
 class FlutterAppFragment : FlutterFragment() {
-    private val METHOD_CHANNEL = "com.chebada/method_channel"
+    private val METHOD_CHANNEL = "com.bingo/method_channel"
 
     private var sMethodChannel: MethodChannel? = null
 
@@ -26,11 +26,8 @@ class FlutterAppFragment : FlutterFragment() {
 
     override fun onFlutterUiDisplayed() {
         super.onFlutterUiDisplayed()
-        activity?.let {
-            if (it is FlutterAppActivity) {
-                sMethodChannel!!.invokeMethod("setInitRoute", it.route)
-            }
-        }
+        sMethodChannel!!.invokeMethod("setInitRoute", initialRoute)
+
     }
 
 }

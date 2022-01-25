@@ -1,5 +1,6 @@
 pluginManagement {
     repositories {
+        maven { url 'https://jitpack.io' }
         gradlePluginPortal()
         google()
         mavenCentral()
@@ -8,6 +9,7 @@ pluginManagement {
 dependencyResolutionManagement {
     repositoriesMode.set(RepositoriesMode.PREFER_PROJECT)
     repositories {
+        maven { url 'https://jitpack.io' }
         google()
         mavenCentral()
     }
@@ -21,3 +23,6 @@ evaluate(new File(                                                     // new
         settingsDir.parentFile,                                              // new
         'flutter_wan/.android/include_flutter.groovy'                         // new
 ))                                                                     // new
+
+include ':flutter_wan'
+project(':flutter_wan').projectDir = new File('../flutter_wan')

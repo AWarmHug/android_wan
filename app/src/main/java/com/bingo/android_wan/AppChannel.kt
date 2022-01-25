@@ -1,5 +1,6 @@
 package com.bingo.android_wan
 
+import com.bingo.android_wan.channels.RouteChannel
 import io.flutter.embedding.android.FlutterFragment
 import io.flutter.plugin.common.MethodCall
 import io.flutter.plugin.common.MethodChannel
@@ -17,7 +18,7 @@ class AppChannels {
     companion object {
 
         val channels = mutableMapOf(
-            getPair(DemoChannel()),
+            getPair(RouteChannel()),
         )
 
         private fun getPair(channel: AppChannel): Pair<String, AppChannel> {

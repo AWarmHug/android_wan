@@ -1,7 +1,12 @@
+import com.bingo.plugin.RouterPlugin
+
 plugins {
     id 'com.android.application'
     id 'org.jetbrains.kotlin.android'
 }
+
+apply plugin: 'kotlin-kapt'
+apply plugin: RouterPlugin
 
 android {
     compileSdk 31
@@ -31,9 +36,17 @@ android {
     }
 }
 
+allprojects {
+    repositories {
+        maven { url 'https://jitpack.io' }
+        google()
+        jcenter()
+    }
+}
+
 dependencies {
 
-    implementation 'androidx.core:core-ktx:1.7.0'
+    implementation 'androidx.core:core-ktx:1.6.0'
     implementation 'androidx.appcompat:appcompat:1.3.0'
     implementation 'com.google.android.material:material:1.4.0'
     implementation 'androidx.constraintlayout:constraintlayout:2.0.4'
@@ -41,7 +54,9 @@ dependencies {
     androidTestImplementation 'androidx.test.ext:junit:1.1.3'
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.4.0'
 
-    dependencies {
-        implementation project(':flutter')
-    }
+    implementation 'com.github.AWarmHug.Router:router:0.0.5'
+    kapt 'com.github.AWarmHug.Router:processor:0.0.5'
+
+    implementation project(':flutter')
+
 }
