@@ -3,12 +3,13 @@ package com.bingo.android_wan
 import android.content.Context
 import android.content.Intent
 import android.os.Bundle
+import com.bingo.router.annotations.Route
 import io.flutter.Log
 import io.flutter.embedding.android.*
 import io.flutter.embedding.android.FlutterActivityLaunchConfigs.BackgroundMode
 import io.flutter.embedding.engine.FlutterShellArgs
 
-
+@Route("/flutter/home")
 class FlutterAppActivity : FlutterFragmentActivity() {
     private val TAG = "FlutterAppActivity"
     val route: String? by lazy {
@@ -17,6 +18,8 @@ class FlutterAppActivity : FlutterFragmentActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+
+
     }
 
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
