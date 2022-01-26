@@ -9,7 +9,6 @@ import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
 
 class FlutterAppFragment : FlutterFragment() {
-    private val METHOD_CHANNEL = "com.bingo/method_channel"
 
     private var sMethodChannel: MethodChannel? = null
 

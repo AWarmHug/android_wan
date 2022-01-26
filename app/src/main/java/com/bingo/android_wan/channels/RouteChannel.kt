@@ -1,5 +1,6 @@
 package com.bingo.android_wan.channels
 
+import android.app.Activity
 import android.content.Intent
 import android.util.Log
 import com.bingo.android_wan.AppChannel
@@ -28,6 +29,14 @@ class RouteChannel : AppChannel {
         val route = call.argument<String>("route")
 
         Router.newRequest(route).startBy(fragment)
+    }
+
+    override fun onMethodCall(activity: Activity, call: MethodCall, result: MethodChannel.Result) {
+        Log.d(TAG, "onMethodCall: $call")
+
+        val route = call.argument<String>("route")
+
+        Router.newRequest(route).startBy(activity)
     }
 
 

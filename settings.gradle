@@ -21,7 +21,7 @@ include ':app'
 setBinding(new Binding([gradle: this]))                                // new
 evaluate(new File(                                                     // new
         settingsDir.parentFile,                                              // new
-        'flutter_wan/.android/include_flutter.groovy'                         // new
+        './flutter_wan/.android/include_flutter.groovy'                         // new
 ))                                                                     // new
 
 include ':flutter_wan'
