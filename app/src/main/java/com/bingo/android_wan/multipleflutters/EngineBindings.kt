@@ -5,12 +5,13 @@ import com.bingo.android_wan.AppChannels
 import com.bingo.android_wan.METHOD_CHANNEL
 import com.bingo.android_wan.MyApp
 import io.flutter.FlutterInjector
+import io.flutter.embedding.android.FlutterActivity
 import io.flutter.embedding.engine.FlutterEngine
 import io.flutter.embedding.engine.dart.DartExecutor
 import io.flutter.plugin.common.MethodChannel
 
 
-class EngineBindings(val activity: Activity, entrypoint: String) {
+class EngineBindings(val activity: FlutterActivity, entrypoint: String) {
 
     val engine: FlutterEngine
     var channel: MethodChannel
@@ -22,7 +23,7 @@ class EngineBindings(val activity: Activity, entrypoint: String) {
             FlutterInjector.instance().flutterLoader().findAppBundlePath(),
             entrypoint
         )
-        engine = app.engineGroup.createAndRunEngine(activity, dartEntrypoint)
+        engine = app.engineGroup.createAndRunEngine(activity, dartEntrypoint, activity.initialRoute)
         channel = MethodChannel(
             engine.dartExecutor.binaryMessenger,
             METHOD_CHANNEL

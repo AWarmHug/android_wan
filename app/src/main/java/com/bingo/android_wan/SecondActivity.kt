@@ -9,7 +9,7 @@ import com.bingo.router.Router
 import com.bingo.router.annotations.Route
 import io.flutter.embedding.android.FlutterActivity
 
-@Route("/second/home")
+@Route("/second")
 class SecondActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {

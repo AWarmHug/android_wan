@@ -3,29 +3,32 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:orientation="vertical"
     android:layout_height="match_parent"
+    android:orientation="vertical"
     tools:context=".MainActivity">
 
     <Button
         android:id="@+id/tv"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="进入Flutter"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        android:text="进入Flutter" />
 
     <Button
-        android:id="@+id/single"
+        android:id="@+id/wan"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="进入single"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        android:text="进入Wan" />
 
+    <Button
+        android:id="@+id/navigator1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="进入Navigator1" />
+
+    <Button
+        android:id="@+id/navigator2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="进入Navigator2" />
 
 </LinearLayout>
