@@ -1,6 +1,5 @@
 package com.bingo.android_wan.multipleflutters
 
-import android.app.Activity
 import com.bingo.android_wan.AppChannels
 import com.bingo.android_wan.METHOD_CHANNEL
 import com.bingo.android_wan.MyApp
@@ -11,7 +10,11 @@ import io.flutter.embedding.engine.dart.DartExecutor
 import io.flutter.plugin.common.MethodChannel
 
 
-class EngineBindings(val activity: FlutterActivity, entrypoint: String) {
+class EngineBindings(
+    val activity: FlutterActivity,
+    library: String? = null,
+    functionName: String
+) {
 
     val engine: FlutterEngine
     var channel: MethodChannel
@@ -19,9 +22,13 @@ class EngineBindings(val activity: FlutterActivity, entrypoint: String) {
     init {
         val app = activity.applicationContext as MyApp
 
-        val dartEntrypoint = DartExecutor.DartEntrypoint(
+        val dartEntrypoint = if (library != null) DartExecutor.DartEntrypoint(
             FlutterInjector.instance().flutterLoader().findAppBundlePath(),
-            entrypoint
+            library,
+            functionName
+        ) else DartExecutor.DartEntrypoint(
+            FlutterInjector.instance().flutterLoader().findAppBundlePath(),
+            functionName
         )
         engine = app.engineGroup.createAndRunEngine(activity, dartEntrypoint, activity.initialRoute)
         channel = MethodChannel(

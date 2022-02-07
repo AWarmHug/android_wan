@@ -17,29 +17,30 @@ class MainActivity : AppCompatActivity() {
 
         findViewById<Button>(R.id.wan).setOnClickListener {
             val intent = Intent(this, SingleFlutterActivity::class.java)
-            intent.putExtra("entrypoint", "main")
+            intent.putExtra("functionName", "main")
             startActivity(intent)
         }
 
         findViewById<Button>(R.id.navigator1).setOnClickListener {
             val intent = Intent(this, SingleFlutterActivity::class.java)
-            intent.putExtra("entrypoint", "mainNavigator1")
+            intent.putExtra("functionName", "mainNavigator1")
             intent.putExtra("route", "/page2")
             startActivity(intent)
         }
 
         findViewById<Button>(R.id.navigator2).setOnClickListener {
             val intent = Intent(this, SingleFlutterActivity::class.java)
-            intent.putExtra("entrypoint", "mainNavigator2")
+            intent.putExtra("functionName", "mainNavigator2")
 //            intent.putExtra("route", "/home")
             startActivity(intent)
         }
 
         findViewById<Button>(R.id.login).setOnClickListener {
 
+
             val intent = Intent(this, SingleFlutterActivity::class.java)
-            intent.putExtra("entrypoint", "mainLogin")
-//            intent.putExtra("route", "/login/login")
+            intent.putExtra("functionName", "main")
+            intent.putExtra("route", "/login/login")
             startActivity(intent)
         }
 

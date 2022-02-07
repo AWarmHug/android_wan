@@ -7,12 +7,16 @@ import io.flutter.embedding.engine.FlutterEngine
 
 class SingleFlutterActivity : FlutterActivity() {
 
-    val entrypoint: String by lazy {
-        return@lazy intent.getStringExtra("entrypoint") ?: "main"
+    private val library: String? by lazy {
+        return@lazy intent.getStringExtra("library")
     }
 
-    val engineBindings: EngineBindings by lazy {
-        EngineBindings(this, entrypoint)
+    private val functionName: String by lazy {
+        return@lazy intent.getStringExtra("functionName") ?: "main"
+    }
+
+    private val engineBindings: EngineBindings by lazy {
+        EngineBindings(this, library, functionName)
     }
 
     override fun onCreate(savedInstanceState: Bundle?) {
