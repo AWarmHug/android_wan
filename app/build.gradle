@@ -10,6 +10,7 @@ apply plugin: RouterPlugin
 
 android {
     compileSdk 31
+    dataBinding.enabled = true
 
     defaultConfig {
         applicationId "com.bingo.android_wan"
