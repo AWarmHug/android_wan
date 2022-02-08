@@ -26,7 +26,7 @@
             android:name=".MainActivity"
             android:exported="true" />
 
-        <activity android:name=".SecondActivity">
+        <activity android:name=".todo.TodoActivity">
 
         </activity>
         <activity

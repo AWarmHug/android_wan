@@ -1,12 +1,9 @@
 package com.bingo.android_wan.channels
 
 import android.app.Activity
-import android.content.Intent
 import android.util.Log
 import com.bingo.android_wan.AppChannel
-import com.bingo.android_wan.SecondActivity
 import com.bingo.router.Router
-import io.flutter.embedding.android.FlutterFragment
 import io.flutter.plugin.common.MethodCall
 import io.flutter.plugin.common.MethodChannel
 
