@@ -2,9 +2,9 @@ import com.bingo.plugin.RouterPlugin
 
 apply plugin: 'com.android.application'
 //制作补丁时将这个打开，auto-patch-plugin紧跟着com.android.application
-apply plugin: 'auto-patch-plugin'
+//apply plugin: 'auto-patch-plugin'
 if (isReleaseBuildType()){
-//    apply plugin: robust.gradle.plugin.RobustTransform
+    apply plugin: robust.gradle.plugin.RobustTransform
 }
 
 apply plugin: 'kotlin-android'
@@ -155,7 +155,7 @@ dependencies {
 
     implementation project(':flutter')
 
-    implementation 'com.github.AWarmHug.Robust:robust:0.4.103'
+    implementation 'com.github.AWarmHug.Robust:robust:0.4.104'
 
 
 }

@@ -11,7 +11,6 @@ import com.bingo.android_wan.robust.PatchManipulateImp
 import com.meituan.robust.Patch
 import com.meituan.robust.PatchExecutor
 import com.meituan.robust.RobustCallBack
-import com.meituan.robust.patch.annotaion.Modify
 
 class MainActivity : AppCompatActivity() {
 
@@ -99,10 +98,9 @@ class MainActivity : AppCompatActivity() {
 
     }
 
-    @Modify
     fun testPatch() {
 
-        Toast.makeText(this, "修复好了，恭喜！", Toast.LENGTH_SHORT).show()
+        Toast.makeText(this, "出错了", Toast.LENGTH_SHORT).show()
     }
 
 }
