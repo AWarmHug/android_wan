@@ -1,12 +1,11 @@
 package com.bingo.android_wan
 
-import android.app.Application
-import io.flutter.embedding.engine.FlutterEngine
+import androidx.multidex.MultiDexApplication
 import io.flutter.embedding.engine.FlutterEngineCache
 import io.flutter.embedding.engine.FlutterEngineGroup
 import io.flutter.embedding.engine.dart.DartExecutor
 
-class MyApp : Application() {
+class MyApp : MultiDexApplication() {
 
     lateinit var engineGroup: FlutterEngineGroup
 

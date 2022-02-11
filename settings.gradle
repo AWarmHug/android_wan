@@ -1,16 +1,26 @@
 pluginManagement {
     repositories {
+//        maven { url 'https://maven.aliyun.com/repository/central' }
+//        maven { url 'https://maven.aliyun.com/repository/public' } //jcenter镜像仓库地址
+//        maven { url 'https://maven.aliyun.com/repository/google' } // google镜像仓库地址
+//        maven { url 'https://maven.aliyun.com/repository/gradle-plugin' } // google镜像仓库地址
         maven { url 'https://jitpack.io' }
         gradlePluginPortal()
         google()
+        jcenter()
         mavenCentral()
     }
 }
 dependencyResolutionManagement {
     repositoriesMode.set(RepositoriesMode.PREFER_PROJECT)
     repositories {
+//        maven { url 'https://maven.aliyun.com/repository/central' }
+//        maven { url 'https://maven.aliyun.com/repository/public' } //jcenter镜像仓库地址
+//        maven { url 'https://maven.aliyun.com/repository/google' } // google镜像仓库地址
+//        maven { url 'https://maven.aliyun.com/repository/gradle-plugin' } // google镜像仓库地址
         maven { url 'https://jitpack.io' }
         google()
+        jcenter()
         mavenCentral()
     }
 }
@@ -26,3 +36,4 @@ evaluate(new File(                                                     // new
 
 include ':flutter_wan'
 project(':flutter_wan').projectDir = new File('../flutter_wan')
+

@@ -1,10 +1,13 @@
 import com.bingo.plugin.RouterPlugin
 
-plugins {
-    id 'com.android.application'
-    id 'org.jetbrains.kotlin.android'
+apply plugin: 'com.android.application'
+//制作补丁时将这个打开，auto-patch-plugin紧跟着com.android.application
+apply plugin: 'auto-patch-plugin'
+if (isReleaseBuildType()){
+//    apply plugin: robust.gradle.plugin.RobustTransform
 }
 
+apply plugin: 'kotlin-android'
 apply plugin: 'kotlin-kapt'
 apply plugin: RouterPlugin
 
@@ -18,13 +21,40 @@ android {
         targetSdk 31
         versionCode 1
         versionName "1.0"
+        multiDexEnabled true
 
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+
+        ndk {
+            abiFilters "arm64-v8a"
+        }
+
+        resConfigs "zh-rCN"
+
     }
 
-    buildTypes {
+    signingConfigs {
         release {
+            storeFile file('../key.jks')
+            storePassword "Secret123"
+            keyAlias "key0"
+            keyPassword "Secret123"
+//            v2SigningEnabled false
+        }
+    }
+
+
+    buildTypes {
+
+        debug {
             minifyEnabled false
+        }
+
+        release {
+            minifyEnabled true
+            zipAlignEnabled true
+            shrinkResources true
+            signingConfig signingConfigs.release
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
         }
     }
@@ -37,6 +67,33 @@ android {
     }
 }
 
+boolean isReleaseBuildType(){
+    for(String s : gradle.startParameter.taskNames) {
+        if (s.contains("Release") | s.contains("release")) {
+            return true
+        }
+    }
+    return false
+}
+
+// 每次执行assembleRelease都要备份apk和mapping文件，防止mapping文件丢失
+tasks.whenTaskAdded { task ->
+    if (task.name == 'assembleRelease' || task.name == 'aR') {
+        task.doLast {
+            copy {
+                from "../app/build/intermediates/apk/release"
+                from "../app/build/outputs/mapping/release"
+                from "../app/build/outputs/robust"
+                include('**/*.apk')
+                include('mapping.txt')
+                include('methodsMap.robust')
+                include('robust.apkhash')
+                into "../releaseBackup/" + new Date().format('yyyy.MM.dd_HH_mm')
+            }
+        }
+    }
+}
+
 allprojects {
     repositories {
         maven { url 'https://jitpack.io' }
@@ -45,9 +102,15 @@ allprojects {
     }
 }
 
+configurations.all {
+    resolutionStrategy.cacheChangingModulesFor 0, 'seconds'
+}
+
 dependencies {
 
     implementation 'androidx.core:core-ktx:1.7.0'
+
+    implementation 'androidx.multidex:multidex:2.0.1'
 
     def version_coroutines = "1.5.2"
     implementation "org.jetbrains.kotlinx:kotlinx-coroutines-android:$version_coroutines"
@@ -91,5 +154,8 @@ dependencies {
     kapt "androidx.room:room-compiler:$version_room"
 
     implementation project(':flutter')
+
+    implementation 'com.github.AWarmHug.Robust:robust:0.4.103'
+
 
 }

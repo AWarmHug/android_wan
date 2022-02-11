@@ -1,7 +1,12 @@
 // Top-level build file where you can add configuration options common to all sub-projects/modules.
 buildscript {
     dependencies {
+        //https://github.com/wutongke/Robust
+        classpath 'com.github.AWarmHug.Robust:gradle-plugin:0.4.103'
+        classpath 'com.github.AWarmHug.Robust:auto-patch-plugin:0.4.103'
         classpath 'com.github.AWarmHug.Router:plugin:0.0.1'
+        classpath 'com.github.dcendents:android-maven-gradle-plugin:2.1'
+
     }
 }
 
