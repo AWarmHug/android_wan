@@ -3,9 +3,14 @@ package com.bingo.android_wan
 import android.content.Intent
 import android.os.Bundle
 import android.util.Log
+import android.view.View
+import android.view.ViewGroup
 import android.widget.Button
+import android.widget.LinearLayout
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
+import androidx.appcompat.widget.AppCompatButton
+import com.bingo.android_wan.leakcanary.LeakCanaryActivity
 import com.bingo.android_wan.multipleflutters.SingleFlutterActivity
 import com.bingo.android_wan.robust.PatchManipulateImp
 import com.meituan.robust.Patch
@@ -96,11 +101,31 @@ class MainActivity : AppCompatActivity() {
             testPatch()
         }
 
+        val linear=findViewById<LinearLayout>(R.id.linear)
+        linear.addView {
+            val button=AppCompatButton(this)
+            button.text="LeakCanary"
+            button.setOnClickListener {
+                startActivity(Intent(this,LeakCanaryActivity::class.java))
+            }
+            return@addView button
+        }
+
+
     }
+
+
+
+
 
     fun testPatch() {
 
         Toast.makeText(this, "出错了", Toast.LENGTH_SHORT).show()
     }
+
+}
+
+fun ViewGroup.addView(block:()->View){
+    addView(block())
 
 }
