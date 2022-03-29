@@ -10,6 +10,7 @@ import android.widget.LinearLayout
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.widget.AppCompatButton
+import com.bingo.android_wan.behavior.BehaviorActivity
 import com.bingo.android_wan.leakcanary.LeakCanaryActivity
 import com.bingo.android_wan.multipleflutters.SingleFlutterActivity
 import com.bingo.android_wan.robust.PatchManipulateImp
@@ -101,21 +102,22 @@ class MainActivity : AppCompatActivity() {
             testPatch()
         }
 
-        val linear=findViewById<LinearLayout>(R.id.linear)
+        findViewById<Button>(R.id.behavior).setOnClickListener {
+            startActivity(Intent(this, BehaviorActivity::class.java))
+        }
+
+        val linear = findViewById<LinearLayout>(R.id.linear)
         linear.addView {
-            val button=AppCompatButton(this)
-            button.text="LeakCanary"
+            val button = AppCompatButton(this)
+            button.text = "LeakCanary"
             button.setOnClickListener {
-                startActivity(Intent(this,LeakCanaryActivity::class.java))
+                startActivity(Intent(this, LeakCanaryActivity::class.java))
             }
             return@addView button
         }
 
 
     }
-
-
-
 
 
     fun testPatch() {
@@ -125,7 +127,7 @@ class MainActivity : AppCompatActivity() {
 
 }
 
-fun ViewGroup.addView(block:()->View){
+fun ViewGroup.addView(block: () -> View) {
     addView(block())
 
 }

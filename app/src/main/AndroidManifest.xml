@@ -26,6 +26,8 @@
             android:name=".MainActivity"
             android:exported="true" />
 
+        <activity android:name=".behavior.BehaviorActivity"/>
+
         <activity android:name=".todo.TodoActivity">
 
         </activity>

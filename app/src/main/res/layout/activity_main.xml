@@ -56,5 +56,10 @@
         android:text="测试补丁"
         android:layout_height="wrap_content"/>
 
+    <Button
+        android:id="@+id/behavior"
+        android:layout_width="wrap_content"
+        android:text="behavior"
+        android:layout_height="wrap_content"/>
 
 </LinearLayout>
